@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BankTransaction.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BenificiaryNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BankName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SWIFTCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                Manage
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BenificiaryNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SWIFTCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="Create" asp-route-id="@item.TransactionId">Edit</a> |
+                @*<a class="btn btn-warning" asp-action="Details" asp-route-id="@item.TransactionId">Details</a> |*@
+                <form asp-action="Delete" asp-route-id="@item.TransactionId">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')">
+                        Delete
+                    </button>
+                </form>
+                @*<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.TransactionId">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

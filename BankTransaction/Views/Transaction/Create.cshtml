@@ -1,0 +1,70 @@
+﻿@model BankTransaction.Models.Transaction
+
+@{
+    ViewData["Title"] = "Make Payment";
+}
+
+<h1>Make Payment</h1>
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+    <h4 class="justify-content-center mx-auto">Transaction</h4>
+    <hr />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TransactionId" />
+            <input type="hidden" asp-for="Date" />
+            <div class="form-group">
+                <label asp-for="AccountNumber" class="control-label"></label>
+                <input asp-for="AccountNumber" class="form-control mb-3" />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BenificiaryNumber" class="control-label"></label>
+                <input asp-for="BenificiaryNumber" class="form-control mb-3" />
+                <span asp-validation-for="BenificiaryNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BankName" class="control-label"></label>
+                <input asp-for="BankName" class="form-control mb-3" />
+                <span asp-validation-for="BankName" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SWIFTCode" class="control-label"></label>
+                        <input asp-for="SWIFTCode" class="form-control mb-3" />
+                        <span asp-validation-for="SWIFTCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Amount" class="control-label"></label>
+                        <input asp-for="Amount" class="form-control mb-3" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <a asp-action="Index" class="btn btn-warning w-100">View All</a>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
